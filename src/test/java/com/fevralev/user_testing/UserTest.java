@@ -27,8 +27,9 @@ public class UserTest {
 
     @Test
     public void createNullUser() {
-        assertNull(user.getEmail());
-        assertNull(user.getPassword());
+        User nullUser  = new User();
+        assertNull(nullUser.getEmail());
+        assertNull(nullUser.getPassword());
     }
 
     @Test

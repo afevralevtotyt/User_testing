@@ -5,12 +5,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.util.Assert;
 
-import static com.fevralev.user_testing.constants.UserTestConstants.VALID_EMAIL;
-import static com.fevralev.user_testing.constants.UserTestConstants.VALID_PASSWORD;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UserTest {
     private User user;
+    private static final String VALID_EMAIL = "user01@gmail.com";
+    private static final String VALID_PASSWORD = "password123";
 
     @BeforeEach
     public void setUp() {
@@ -19,20 +19,26 @@ public class UserTest {
 
     @Test
     public void createUser() {
+        User actualUser = new User(VALID_EMAIL, VALID_PASSWORD);
         assertEquals(user.getEmail(), VALID_EMAIL);
         assertEquals(user.getPassword(), VALID_PASSWORD);
+        assertEquals(actualUser, user);
     }
 
     @Test
     public void createNullUser() {
-        User user = new User();
         assertNull(user.getEmail());
         assertNull(user.getPassword());
     }
 
     @Test
+    public void canNotCreateNotValidUser() {
+        Exception exception = assertThrows(IllegalArgumentException.class,() -> {new User("fdfd.com", "pass");
+        });
+    }
+
+    @Test
     public void emailUserValidation() {
-        User user = new User(VALID_EMAIL, VALID_PASSWORD);
         Assertions.assertTrue(user.getEmail().contains("@"));
         Assertions.assertTrue(user.getEmail().contains("."));
         Assertions.assertNotNull(user.getEmail());

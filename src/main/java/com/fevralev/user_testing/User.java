@@ -11,7 +11,8 @@ public class User {
         EmailValidator validator = EmailValidator.getInstance();
         if(validator.isValid(email)){
             this.email = email;
-        }
+        }else {
+        throw new IllegalArgumentException("Неверный email");}
         this.password = password;
     }
 

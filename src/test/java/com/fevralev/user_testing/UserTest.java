@@ -34,8 +34,10 @@ public class UserTest {
 
     @Test
     public void canNotCreateNotValidUser() {
-        Exception exception = assertThrows(IllegalArgumentException.class,() -> {new User("fdfd.com", "pass");
+        Exception exception = assertThrows(IllegalArgumentException.class,() -> {new User("fdfd@g.com", "pass");
         });
+        assertEquals("Неверный email", exception.getMessage());
+
     }
 
     @Test

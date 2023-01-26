@@ -34,10 +34,9 @@ public class UserTest {
 
     @Test
     public void canNotCreateNotValidUser() {
-        Exception exception = assertThrows(IllegalArgumentException.class,() -> {new User("fdfd@g.com", "pass");
+        Exception exception = assertThrows(IllegalArgumentException.class,() -> {new User("fdfd.com", "pass");
         });
         assertEquals("Неверный email", exception.getMessage());
-
     }
 
     @Test
@@ -49,9 +48,8 @@ public class UserTest {
     }
 
     @Test
-    public void loginNotEqualsPassport() {
+    public void loginNotEqualsPassword() {
     assertNotEquals(user.getEmail(), user.getPassword());
     }
-
 
 }

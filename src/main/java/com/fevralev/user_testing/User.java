@@ -1,5 +1,6 @@
 package com.fevralev.user_testing;
 
+import org.apache.commons.validator.Validator;
 import org.apache.commons.validator.routines.EmailValidator;
 
 import java.util.Objects;

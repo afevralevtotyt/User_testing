@@ -33,7 +33,7 @@ public class UserTest {
     }
 
     @Test
-    public void canNotCreateNotValidUser() {
+    public void canNotCreateNotInvalidUser() {
         Exception exception = assertThrows(IllegalArgumentException.class,() -> {new User("fdfd.com", "pass");
         });
         assertEquals("Неверный email", exception.getMessage());
@@ -41,10 +41,10 @@ public class UserTest {
 
     @Test
     public void emailUserValidation() {
-        Assertions.assertTrue(user.getEmail().contains("@"));
-        Assertions.assertTrue(user.getEmail().contains("."));
         Assertions.assertNotNull(user.getEmail());
         Assertions.assertNotNull(user.getPassword());
+        Assertions.assertTrue(user.getEmail().contains("@"));
+        Assertions.assertTrue(user.getEmail().contains("."));
     }
 
     @Test
